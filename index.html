@@ -1,212 +1,973 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANTV Live TV</title>
 
-    <!-- HLS.js -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ANTV LIVE</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
 
-        html, body {
+        html,
+        body {
+
             margin: 0;
             padding: 0;
+
             width: 100%;
             height: 100%;
+
+            overflow: hidden;
+
             background: #000;
+
             font-family: Arial, sans-serif;
+
         }
 
-        .player {
+
+        #player {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
             background: #000;
+
+            overflow: hidden;
+
         }
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #000;
-        }
 
-        .error {
+        #video {
+
             position: absolute;
-            color: white;
-            background: rgba(0,0,0,.8);
-            padding: 15px 20px;
-            border-radius: 8px;
-            display: none;
-            text-align: center;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: #000;
+
+            object-fit: contain;
+
         }
+
+
+        /* ============================
+           LOGO
+        ============================ */
+
+        #logo {
+
+            position: absolute;
+
+            top: 30px;
+            left: 35px;
+
+            z-index: 10;
+
+            color: #fff;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            background: rgba(0,0,0,.55);
+
+            padding: 8px 15px;
+
+            border-radius: 5px;
+
+            pointer-events: none;
+
+        }
+
+
+        #live {
+
+            color: #ff3333;
+
+            margin-left: 8px;
+
+        }
+
+
+        /* ============================
+           LOADING
+        ============================ */
+
+        #loading {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            z-index: 20;
+
+            color: #fff;
+
+            font-size: 20px;
+
+            background: rgba(0,0,0,.7);
+
+            padding: 15px 25px;
+
+            border-radius: 5px;
+
+        }
+
+
+        /* ============================
+           ERROR
+        ============================ */
+
+        #error {
+
+            display: none;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            z-index: 30;
+
+            color: #fff;
+
+            text-align: center;
+
+            background: rgba(0,0,0,.85);
+
+            padding: 25px 35px;
+
+            border-radius: 8px;
+
+            font-size: 18px;
+
+        }
+
+
+        #retry {
+
+            margin-top: 15px;
+
+            padding: 10px 25px;
+
+            border: 0;
+
+            border-radius: 5px;
+
+            background: #e53935;
+
+            color: #fff;
+
+            font-size: 16px;
+
+        }
+
+
+        /* ============================
+           CONTROL BAR
+        ============================ */
+
+        #controls {
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 40;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 15px 25px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.9)
+                );
+
+            opacity: 0;
+
+            transition: opacity .2s;
+
+        }
+
+
+        #player.show-controls #controls {
+
+            opacity: 1;
+
+        }
+
+
+        .button {
+
+            width: 50px;
+            height: 45px;
+
+            margin-right: 10px;
+
+            border: 0;
+
+            border-radius: 5px;
+
+            background: rgba(255,255,255,.18);
+
+            color: #fff;
+
+            font-size: 22px;
+
+        }
+
+
+        .button:focus {
+
+            outline: 2px solid #fff;
+
+            background: rgba(255,255,255,.35);
+
+        }
+
+
+        #channel {
+
+            color: #fff;
+
+            font-size: 17px;
+
+            margin-left: 10px;
+
+        }
+
+
+        /* ============================
+           TIZEN
+        ============================ */
+
+        :-webkit-full-screen {
+
+            width: 100%;
+            height: 100%;
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<div class="player">
+
+<div id="player">
+
 
     <video
         id="video"
-        controls
         autoplay
+        muted
         playsinline
-        muted>
+        preload="auto">
     </video>
 
-    <div id="error" class="error">
-        Không thể phát kênh truyền hình.
+
+    <div id="logo">
+
+        ANTV
+
+        <span id="live">
+            ● LIVE
+        </span>
+
     </div>
+
+
+    <div id="loading">
+
+        Đang kết nối ANTV...
+
+    </div>
+
+
+    <div id="error">
+
+        <div>
+            Không thể kết nối ANTV
+        </div>
+
+        <button id="retry">
+            THỬ LẠI
+        </button>
+
+    </div>
+
+
+    <div id="controls">
+
+
+        <button
+            id="playButton"
+            class="button">
+
+            ▶
+
+        </button>
+
+
+        <button
+            id="muteButton"
+            class="button">
+
+            🔇
+
+        </button>
+
+
+        <button
+            id="fullscreenButton"
+            class="button">
+
+            ⛶
+
+        </button>
+
+
+        <span id="channel">
+
+            ANTV - Truyền hình Công an Nhân dân
+
+        </span>
+
+
+    </div>
+
 
 </div>
 
+
 <script>
 
-    const video = document.getElementById("video");
-    const errorBox = document.getElementById("error");
 
-    const streamUrl =
-        "https://live-a.fptplay53.net/live/media/antv/live-hls-avc/antv-avc1_4000000=10000-mp4a_131600=20000.m3u8";
-
-
-    // ==============================
-    // KIỂM TRA HLS
-    // ==============================
-
-    if (Hls.isSupported()) {
-
-        const hls = new Hls({
-            enableWorker: true,
-
-            // Tự reconnect khi mất mạng
-            manifestLoadingMaxRetry: 5,
-            levelLoadingMaxRetry: 5,
-            fragLoadingMaxRetry: 5,
-
-            // Live stream
-            liveSyncDurationCount: 3
-        });
-
-        hls.loadSource(streamUrl);
-
-        hls.attachMedia(video);
+/* =====================================================
+   CẤU HÌNH
+===================================================== */
 
 
-        // Khi load xong stream
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+var STREAM_URL =
+    "https://live-a.fptplay53.net/live/media/antv/live-hls-avc/antv-avc1_4000000=10000-mp4a_131600=20000.m3u8";
 
-            video.play()
-                .then(() => {
-                    console.log("Đang phát ANTV");
-                })
-                .catch(error => {
+
+var video =
+    document.getElementById("video");
+
+
+var player =
+    document.getElementById("player");
+
+
+var loading =
+    document.getElementById("loading");
+
+
+var errorBox =
+    document.getElementById("error");
+
+
+var retryButton =
+    document.getElementById("retry");
+
+
+var playButton =
+    document.getElementById("playButton");
+
+
+var muteButton =
+    document.getElementById("muteButton");
+
+
+var fullscreenButton =
+    document.getElementById("fullscreenButton");
+
+
+var reconnectTimer = null;
+
+var controlsTimer = null;
+
+
+/* =====================================================
+   HIỂN THỊ LOADING
+===================================================== */
+
+
+function showLoading(text) {
+
+    loading.innerHTML = text;
+
+    loading.style.display = "block";
+
+}
+
+
+/* =====================================================
+   ẨN LOADING
+===================================================== */
+
+
+function hideLoading() {
+
+    loading.style.display = "none";
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+
+function showError() {
+
+    loading.style.display = "none";
+
+    errorBox.style.display = "block";
+
+}
+
+
+/* =====================================================
+   ẨN ERROR
+===================================================== */
+
+
+function hideError() {
+
+    errorBox.style.display = "none";
+
+}
+
+
+/* =====================================================
+   PHÁT VIDEO
+===================================================== */
+
+
+function startVideo() {
+
+    hideError();
+
+    showLoading(
+        "Đang kết nối ANTV..."
+    );
+
+
+    /*
+       Xóa source cũ
+    */
+
+    video.pause();
+
+    video.removeAttribute("src");
+
+    video.load();
+
+
+    /*
+       Gán HLS trực tiếp
+    */
+
+    video.src = STREAM_URL;
+
+
+    /*
+       Bắt đầu phát
+    */
+
+    try {
+
+        var promise =
+            video.play();
+
+
+        if (promise &&
+            promise.catch) {
+
+            promise.catch(
+                function() {
+
+                    /*
+                       Một số TV yêu cầu
+                       thao tác remote.
+
+                       Vì video đang muted
+                       nên đa số TV vẫn
+                       cho autoplay.
+                    */
 
                     console.log(
-                        "Trình duyệt chặn autoplay:",
-                        error
+                        "Autoplay chưa được phép"
                     );
 
-                    // Thử phát muted
-                    video.muted = true;
-
-                    video.play().catch(() => {
-                        errorBox.style.display = "block";
-                    });
-                });
-
-        });
-
-
-        // Xử lý lỗi HLS
-        hls.on(Hls.Events.ERROR, function (event, data) {
-
-            console.log("HLS Error:", data);
-
-            if (data.fatal) {
-
-                switch (data.type) {
-
-                    case Hls.ErrorTypes.NETWORK_ERROR:
-
-                        console.log(
-                            "Lỗi mạng - đang thử kết nối lại..."
-                        );
-
-                        hls.startLoad();
-                        break;
-
-
-                    case Hls.ErrorTypes.MEDIA_ERROR:
-
-                        console.log(
-                            "Lỗi media - đang recover..."
-                        );
-
-                        hls.recoverMediaError();
-                        break;
-
-
-                    default:
-
-                        console.log(
-                            "Không thể khôi phục stream."
-                        );
-
-                        hls.destroy();
-
-                        errorBox.style.display = "block";
-
-                        break;
                 }
-            }
+            );
 
-        });
+        }
 
+    } catch (e) {
+
+        console.log(e);
 
     }
 
-    // ==============================
-    // SAFARI / iPHONE / iPAD
-    // ==============================
+}
 
-    else if (video.canPlayType("application/vnd.apple.mpegurl")) {
 
-        video.src = streamUrl;
+/* =====================================================
+   RECONNECT
+===================================================== */
 
-        video.addEventListener("loadedmetadata", function () {
 
-            video.play()
-                .catch(error => {
+function reconnect() {
 
-                    console.log(
-                        "Autoplay bị chặn:",
-                        error
-                    );
+    if (reconnectTimer) {
 
-                });
+        clearTimeout(
+            reconnectTimer
+        );
 
-        });
+    }
+
+
+    showLoading(
+        "Mất kết nối - đang kết nối lại..."
+    );
+
+
+    reconnectTimer = setTimeout(
+        function() {
+
+            startVideo();
+
+        },
+        3000
+    );
+
+}
+
+
+/* =====================================================
+   VIDEO EVENTS
+===================================================== */
+
+
+video.addEventListener(
+    "loadedmetadata",
+    function() {
+
+        hideLoading();
+
+        hideError();
+
+        try {
+
+            video.play();
+
+        } catch (e) {}
+
+    }
+);
+
+
+video.addEventListener(
+    "canplay",
+    function() {
+
+        hideLoading();
+
+    }
+);
+
+
+video.addEventListener(
+    "playing",
+    function() {
+
+        hideLoading();
+
+        playButton.innerHTML =
+            "⏸";
+
+    }
+);
+
+
+video.addEventListener(
+    "pause",
+    function() {
+
+        playButton.innerHTML =
+            "▶";
+
+    }
+);
+
+
+video.addEventListener(
+    "waiting",
+    function() {
+
+        showLoading(
+            "Đang tải..."
+        );
+
+    }
+);
+
+
+video.addEventListener(
+    "error",
+    function() {
+
+        console.log(
+            "Video error"
+        );
+
+        reconnect();
+
+    }
+);
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+
+playButton.onclick =
+function() {
+
+    if (video.paused) {
+
+        try {
+
+            video.play();
+
+        } catch (e) {}
+
+        playButton.innerHTML =
+            "⏸";
 
     }
 
     else {
 
-        errorBox.innerText =
-            "Trình duyệt này không hỗ trợ phát HLS.";
+        video.pause();
 
-        errorBox.style.display = "block";
+        playButton.innerHTML =
+            "▶";
 
     }
 
+};
+
+
+/* =====================================================
+   MUTE
+===================================================== */
+
+
+muteButton.onclick =
+function() {
+
+    video.muted =
+        !video.muted;
+
+
+    if (video.muted) {
+
+        muteButton.innerHTML =
+            "🔇";
+
+    }
+
+    else {
+
+        muteButton.innerHTML =
+            "🔊";
+
+    }
+
+};
+
+
+/* =====================================================
+   FULLSCREEN
+===================================================== */
+
+
+function goFullscreen() {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            if (
+                player.requestFullscreen
+            ) {
+
+                player.requestFullscreen();
+
+            }
+
+            else if (
+                player.webkitRequestFullscreen
+            ) {
+
+                player.webkitRequestFullscreen();
+
+            }
+
+        }
+
+        else {
+
+            if (
+                document.exitFullscreen
+            ) {
+
+                document.exitFullscreen();
+
+            }
+
+            else if (
+                document.webkitExitFullscreen
+            ) {
+
+                document.webkitExitFullscreen();
+
+            }
+
+        }
+
+    }
+
+    catch (e) {
+
+        console.log(
+            "Fullscreen:",
+            e
+        );
+
+    }
+
+}
+
+
+fullscreenButton.onclick =
+function() {
+
+    goFullscreen();
+
+};
+
+
+/* =====================================================
+   CLICK VIDEO
+===================================================== */
+
+
+video.onclick =
+function() {
+
+    showControls();
+
+};
+
+
+/* =====================================================
+   HIỂN THỊ CONTROL
+===================================================== */
+
+
+function showControls() {
+
+    player.classList.add(
+        "show-controls"
+    );
+
+
+    if (controlsTimer) {
+
+        clearTimeout(
+            controlsTimer
+        );
+
+    }
+
+
+    controlsTimer =
+        setTimeout(
+            function() {
+
+                player.classList.remove(
+                    "show-controls"
+                );
+
+            },
+            4000
+        );
+
+}
+
+
+/* =====================================================
+   REMOTE SAMSUNG TIZEN
+===================================================== */
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        var key =
+            event.keyCode;
+
+
+        /*
+           ENTER / OK
+        */
+
+        if (key === 13) {
+
+            showControls();
+
+        }
+
+
+        /*
+           PLAY / PAUSE
+        */
+
+        if (
+            key === 415 ||
+            key === 19
+        ) {
+
+            if (video.paused) {
+
+                video.play();
+
+            }
+
+            else {
+
+                video.pause();
+
+            }
+
+        }
+
+
+        /*
+           STOP
+        */
+
+        if (key === 413) {
+
+            video.pause();
+
+        }
+
+
+        /*
+           MUTE
+        */
+
+        if (key === 449) {
+
+            video.muted =
+                !video.muted;
+
+
+            if (video.muted) {
+
+                muteButton.innerHTML =
+                    "🔇";
+
+            }
+
+            else {
+
+                muteButton.innerHTML =
+                    "🔊";
+
+            }
+
+        }
+
+
+        /*
+           FULLSCREEN
+        */
+
+        if (key === 122) {
+
+            goFullscreen();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RETRY BUTTON
+===================================================== */
+
+
+retryButton.onclick =
+function() {
+
+    startVideo();
+
+};
+
+
+/* =====================================================
+   TỰ KHỞI ĐỘNG
+===================================================== */
+
+
+startVideo();
+
+
 </script>
 
+
 </body>
+
 </html>
