@@ -1,3 +1,4 @@
-"CHỊ TRỢ LÝ CỦA ANH" "" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQraISXVXr8RJuXSn-OBVkeAd96BXtqCMc48Fcp8uCX4VI?width=1920&height=808" 
-"THỎ ƠI" "" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQTXGPPCjLXzSbnt4pkwnfB8AehQDgSTJ01GDR2EGOPeqP4?width=1920&height=1080" 
-"THIEN LONG BAT BO 2003" "TAP 01" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/thienlongbatbo2003.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQKX0cx4FljQat2cwZ5qCudAdYEF3LyKv_8lK90hf1SmV4?width=1920&height=1080"
+"CHỊ TRỢ LÝ CỦA ANH" "" "https://st.download.com.vn/data/image/2022/01/28/chi-tro-ly-cua-anh-700.jpg" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQraISXVXr8RJuXSn-OBVkeAd96BXtqCMc48Fcp8uCX4VI?width=1920&height=808" 
+"THIÊN LONG BÁT BỘ 2003" "TẬP 02" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/thienlongbatbo2003.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQSDSgeWkraoRY8_9PqpfY8LAV6eqKc0BpYJTarCl1GlOcg?width=1920&height=1080"
+"THỎ ƠI" "" "https://i.ytimg.com/vi/y_RHFh30QAM/maxresdefault.jpg" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQTXGPPCjLXzSbnt4pkwnfB8AehQDgSTJ01GDR2EGOPeqP4?width=1920&height=1080" 
+"THIÊN LONG BÁT BỘ 2003" "TẬP 01" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/thienlongbatbo2003.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQKX0cx4FljQat2cwZ5qCudAdYEF3LyKv_8lK90hf1SmV4?width=1920&height=1080"
