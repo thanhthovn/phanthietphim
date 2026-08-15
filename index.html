@@ -12,24 +12,17 @@
 
   <title>Kho Phim</title>
 
-
   <style>
-
-    /* ==================================================
-       RESET
-    ================================================== */
 
     * {
       box-sizing: border-box;
     }
-
 
     html,
     body {
 
       margin: 0;
       padding: 0;
-
       min-height: 100%;
 
       font-family:
@@ -53,14 +46,9 @@
 
     }
 
-
     body {
-
-      padding:
-        20px;
-
+      padding: 20px;
     }
-
 
     .container {
 
@@ -97,17 +85,48 @@
 
     }
 
-
     .header h1 {
 
-      margin:
-        0;
+      margin: 0;
 
       font-size:
         28px;
 
       font-weight:
         700;
+
+    }
+
+
+    /* ==================================================
+       ERROR
+    ================================================== */
+
+    .error {
+
+      display:
+        none;
+
+      margin-bottom:
+        20px;
+
+      padding:
+        14px 16px;
+
+      border-radius:
+        10px;
+
+      background:
+        #ff3b30;
+
+      color:
+        #fff;
+
+      font-size:
+        14px;
+
+      font-weight:
+        600;
 
     }
 
@@ -137,7 +156,7 @@
         relative;
 
       margin-bottom:
-        12px;
+        8px;
 
       border:
         4px solid #ffcc00;
@@ -148,6 +167,49 @@
 
     }
 
+    .player:fullscreen {
+
+      width:
+        100vw;
+
+      height:
+        100vh;
+
+      aspect-ratio:
+        auto;
+
+      border:
+        0;
+
+      border-radius:
+        0;
+
+      margin:
+        0;
+
+    }
+
+    .player:-webkit-full-screen {
+
+      width:
+        100vw;
+
+      height:
+        100vh;
+
+      aspect-ratio:
+        auto;
+
+      border:
+        0;
+
+      border-radius:
+        0;
+
+      margin:
+        0;
+
+    }
 
     .player iframe {
 
@@ -167,7 +229,7 @@
 
 
     /* ==================================================
-       PLAYER CHƯA CHỌN PHIM
+       PLAYER CHƯA CHỌN
     ================================================== */
 
     .player-empty {
@@ -198,7 +260,6 @@
 
     }
 
-
     .player-empty-icon {
 
       font-size:
@@ -208,7 +269,6 @@
         12px;
 
     }
-
 
     .player-empty-text {
 
@@ -227,8 +287,17 @@
       display:
         none;
 
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        12px;
+
       padding:
-        13px 18px;
+        10px 12px;
 
       margin-bottom:
         20px;
@@ -240,16 +309,10 @@
         #5856d6;
 
       border-left:
-        7px solid #ff3b30;
+        6px solid #ff3b30;
 
       border-right:
-        7px solid #34c759;
-
-      font-size:
-        18px;
-
-      font-weight:
-        600;
+        6px solid #34c759;
 
       box-shadow:
         0 5px 15px
@@ -257,9 +320,99 @@
 
     }
 
+    .current-movie-text {
+
+      flex:
+        1;
+
+      min-width:
+        0;
+
+      font-size:
+        16px;
+
+      font-weight:
+        600;
+
+      line-height:
+        1.4;
+
+      overflow:
+        hidden;
+
+      text-overflow:
+        ellipsis;
+
+      white-space:
+        nowrap;
+
+    }
+
 
     /* ==================================================
-       THANH PHIM BỘ / PHIM LẺ
+       NÚT FULLSCREEN - ĐỎ
+    ================================================== */
+
+    .fullscreen-button {
+
+      flex:
+        0 0 auto;
+
+      width:
+        42px;
+
+      height:
+        36px;
+
+      padding:
+        0;
+
+      border:
+        0;
+
+      border-radius:
+        7px;
+
+      cursor:
+        pointer;
+
+      background:
+        #ff3b30;
+
+      color:
+        #fff;
+
+      font-size:
+        20px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+
+    }
+
+    .fullscreen-button:hover {
+
+      background:
+        #d70015;
+
+      transform:
+        scale(1.05);
+
+    }
+
+
+    /* ==================================================
+       THANH CHUYỂN PHIM
     ================================================== */
 
     .movie-header {
@@ -293,11 +446,6 @@
         rgba(0, 0, 0, 0.25);
 
     }
-
-
-    /* ==================================================
-       NÚT CHUYỂN LOẠI
-    ================================================== */
 
     .category-button {
 
@@ -337,7 +485,6 @@
 
     }
 
-
     .category-button:hover {
 
       transform:
@@ -345,14 +492,12 @@
 
     }
 
-
     .category-button.series {
 
       background:
         #5856d6;
 
     }
-
 
     .category-button.movie {
 
@@ -363,7 +508,7 @@
 
 
     /* ==================================================
-       SỐ LƯỢNG PHIM
+       SỐ LƯỢNG
     ================================================== */
 
     .movie-count {
@@ -399,7 +544,7 @@
 
 
     /* ==================================================
-       GRID PHIM
+       GRID
     ================================================== */
 
     .movie-grid {
@@ -420,7 +565,7 @@
 
 
     /* ==================================================
-       CARD PHIM
+       CARD
     ================================================== */
 
     .movie-card {
@@ -447,7 +592,6 @@
 
     }
 
-
     .movie-card:hover {
 
       transform:
@@ -461,7 +605,7 @@
 
 
     /* ==================================================
-       7 MÀU CARD
+       7 MÀU
     ================================================== */
 
     .movie-card:nth-child(7n + 1) {
@@ -474,7 +618,6 @@
 
     }
 
-
     .movie-card:nth-child(7n + 2) {
 
       background:
@@ -484,7 +627,6 @@
         #ff9500;
 
     }
-
 
     .movie-card:nth-child(7n + 3) {
 
@@ -496,7 +638,6 @@
 
     }
 
-
     .movie-card:nth-child(7n + 4) {
 
       background:
@@ -506,7 +647,6 @@
         #34c759;
 
     }
-
 
     .movie-card:nth-child(7n + 5) {
 
@@ -518,7 +658,6 @@
 
     }
 
-
     .movie-card:nth-child(7n + 6) {
 
       background:
@@ -528,7 +667,6 @@
         #5856d6;
 
     }
-
 
     .movie-card:nth-child(7n + 7) {
 
@@ -542,7 +680,7 @@
 
 
     /* ==================================================
-       CARD ĐANG CHỌN
+       CARD ACTIVE
     ================================================== */
 
     .movie-card.active {
@@ -561,7 +699,7 @@
 
 
     /* ==================================================
-       LOGO / POSTER NGANG
+       LOGO 16:9
     ================================================== */
 
     .movie-logo {
@@ -589,7 +727,6 @@
 
     }
 
-
     .movie-logo img {
 
       width:
@@ -609,7 +746,6 @@
 
     }
 
-
     .movie-card:hover
     .movie-logo img {
 
@@ -620,7 +756,7 @@
 
 
     /* ==================================================
-       KHÔNG CÓ LOGO
+       LOGO TRỐNG
     ================================================== */
 
     .logo-error {
@@ -696,7 +832,7 @@
 
 
     /* ==================================================
-       KHU VỰC TẬP
+       DANH SÁCH TẬP
     ================================================== */
 
     .episode-panel {
@@ -722,14 +858,12 @@
 
     }
 
-
     .episode-header {
 
       margin-bottom:
         14px;
 
     }
-
 
     .episode-title {
 
@@ -740,13 +874,6 @@
         700;
 
     }
-
-
-    /* ==================================================
-       DANH SÁCH TẬP
-
-       DESKTOP = 50% CHIỀU RỘNG
-    ================================================== */
 
     .episode-list {
 
@@ -811,7 +938,6 @@
 
     }
 
-
     .episode-button:hover {
 
       transform:
@@ -821,7 +947,6 @@
         #7674ed;
 
     }
-
 
     .episode-button.active {
 
@@ -886,103 +1011,38 @@
 
 
     /* ==================================================
-       ERROR
-    ================================================== */
-
-    .error {
-
-      display:
-        none;
-
-      margin-bottom:
-        20px;
-
-      padding:
-        14px 16px;
-
-      border-radius:
-        10px;
-
-      background:
-        #ff3b30;
-
-      color:
-        #fff;
-
-      font-size:
-        14px;
-
-      font-weight:
-        600;
-
-    }
-
-
-    /* ==================================================
        MOBILE
     ================================================== */
 
     @media (max-width: 600px) {
 
       body {
-
-        padding:
-          10px;
-
+        padding: 10px;
       }
-
 
       .header {
-
-        padding:
-          15px;
-
+        padding: 15px;
       }
-
 
       .header h1 {
-
-        font-size:
-          22px;
-
+        font-size: 22px;
       }
-
 
       .movie-header {
-
-        gap:
-          8px;
-
-        padding:
-          9px;
-
+        gap: 8px;
+        padding: 9px;
       }
-
 
       .category-button {
-
-        min-height:
-          44px;
-
-        font-size:
-          13px;
-
+        min-height: 44px;
+        font-size: 13px;
       }
-
 
       .movie-count {
-
-        min-width:
-          60px;
-
-        padding:
-          7px 8px;
-
-        font-size:
-          11px;
-
+        min-width: 60px;
+        padding: 7px 8px;
+        font-size: 11px;
       }
-
 
       .movie-grid {
 
@@ -997,7 +1057,6 @@
 
       }
 
-
       .movie-name {
 
         min-height:
@@ -1011,14 +1070,25 @@
 
       }
 
-
-      .current-movie {
+      .current-movie-text {
 
         font-size:
-          16px;
+          13px;
 
       }
 
+      .fullscreen-button {
+
+        width:
+          38px;
+
+        height:
+          34px;
+
+        font-size:
+          18px;
+
+      }
 
       .player {
 
@@ -1026,12 +1096,6 @@
           3px;
 
       }
-
-
-      /*
-        Mobile:
-        danh sách tập full chiều rộng.
-      */
 
       .episode-list {
 
@@ -1048,7 +1112,6 @@
           8px;
 
       }
-
 
       .episode-button {
 
@@ -1099,9 +1162,7 @@
 <div class="container">
 
 
-  <!-- =================================================
-       HEADER
-  ================================================== -->
+  <!-- HEADER -->
 
   <div class="header">
 
@@ -1112,9 +1173,7 @@
   </div>
 
 
-  <!-- =================================================
-       ERROR
-  ================================================== -->
+  <!-- ERROR -->
 
   <div
     id="error"
@@ -1122,11 +1181,11 @@
   </div>
 
 
-  <!-- =================================================
-       PLAYER
-  ================================================== -->
+  <!-- PLAYER -->
 
-  <div class="player">
+  <div
+    id="playerBox"
+    class="player">
 
 
     <div
@@ -1164,19 +1223,34 @@
   </div>
 
 
-  <!-- =================================================
-       PHIM ĐANG XEM
-  ================================================== -->
+  <!-- ĐANG XEM + FULLSCREEN -->
 
   <div
     id="currentMovie"
     class="current-movie">
+
+
+    <div
+      id="currentMovieText"
+      class="current-movie-text">
+    </div>
+
+
+    <button
+      id="fullscreenButton"
+      class="fullscreen-button"
+      type="button"
+      title="Toàn màn hình">
+
+      ⛶
+
+    </button>
+
+
   </div>
 
 
-  <!-- =================================================
-       PHIM BỘ / PHIM LẺ
-  ================================================== -->
+  <!-- CHUYỂN LOẠI PHIM -->
 
   <div class="movie-header">
 
@@ -1203,9 +1277,7 @@
   </div>
 
 
-  <!-- =================================================
-       DANH SÁCH TẬP
-  ================================================== -->
+  <!-- DANH SÁCH TẬP -->
 
   <div
     id="episodePanel"
@@ -1234,9 +1306,7 @@
   </div>
 
 
-  <!-- =================================================
-       LOADING
-  ================================================== -->
+  <!-- LOADING -->
 
   <div
     id="loading"
@@ -1247,9 +1317,7 @@
   </div>
 
 
-  <!-- =================================================
-       DANH SÁCH PHIM
-  ================================================== -->
+  <!-- DANH SÁCH PHIM -->
 
   <div
     id="movieGrid"
@@ -1257,9 +1325,7 @@
   </div>
 
 
-  <!-- =================================================
-       KHÔNG CÓ PHIM
-  ================================================== -->
+  <!-- EMPTY -->
 
   <div
     id="empty"
@@ -1276,9 +1342,8 @@
 
 <script>
 
-
   /* ==================================================
-     FILE DỮ LIỆU
+     CẤU HÌNH
   ================================================== */
 
   const DATA_FILE =
@@ -1286,16 +1351,11 @@
 
 
   /* ==================================================
-     LOẠI HIỆN TẠI
+     BIẾN
   ================================================== */
 
   let currentCategory =
     "series";
-
-
-  /* ==================================================
-     DỮ LIỆU PHIM
-  ================================================== */
 
   let allMovies = [];
 
@@ -1309,79 +1369,168 @@
       "movieGrid"
     );
 
-
   const loading =
     document.getElementById(
       "loading"
     );
-
 
   const empty =
     document.getElementById(
       "empty"
     );
 
-
   const errorBox =
     document.getElementById(
       "error"
     );
-
 
   const movieCount =
     document.getElementById(
       "movieCount"
     );
 
-
   const videoFrame =
     document.getElementById(
       "videoFrame"
     );
-
 
   const playerEmpty =
     document.getElementById(
       "playerEmpty"
     );
 
-
   const currentMovie =
     document.getElementById(
       "currentMovie"
     );
 
+  const currentMovieText =
+    document.getElementById(
+      "currentMovieText"
+    );
 
   const categoryButton =
     document.getElementById(
       "categoryButton"
     );
 
-
   const episodePanel =
     document.getElementById(
       "episodePanel"
     );
-
 
   const episodeTitle =
     document.getElementById(
       "episodeTitle"
     );
 
-
   const episodeList =
     document.getElementById(
       "episodeList"
     );
 
+  const playerBox =
+    document.getElementById(
+      "playerBox"
+    );
+
+  const fullscreenButton =
+    document.getElementById(
+      "fullscreenButton"
+    );
+
 
   /* ==================================================
-     ĐỌC linkphim.txt
+     FULLSCREEN
+  ================================================== */
+
+  fullscreenButton.addEventListener(
+    "click",
+    function () {
+
+      if (
+        !document.fullscreenElement
+      ) {
+
+        if (
+          playerBox.requestFullscreen
+        ) {
+
+          playerBox.requestFullscreen();
+
+        } else if (
+          playerBox.webkitRequestFullscreen
+        ) {
+
+          playerBox.webkitRequestFullscreen();
+
+        }
+
+      } else {
+
+        if (
+          document.exitFullscreen
+        ) {
+
+          document.exitFullscreen();
+
+        } else if (
+          document.webkitExitFullscreen
+        ) {
+
+          document.webkitExitFullscreen();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* ==================================================
+     CẬP NHẬT FULLSCREEN
+  ================================================== */
+
+  function updateFullscreenButton() {
+
+    fullscreenButton.textContent =
+      "⛶";
+
+    if (
+      document.fullscreenElement
+    ) {
+
+      fullscreenButton.title =
+        "Thoát toàn màn hình";
+
+    } else {
+
+      fullscreenButton.title =
+        "Toàn màn hình";
+
+    }
+
+  }
+
+
+  document.addEventListener(
+    "fullscreenchange",
+    updateFullscreenButton
+  );
+
+
+  document.addEventListener(
+    "webkitfullscreenchange",
+    updateFullscreenButton
+  );
+
+
+  /* ==================================================
+     ĐỌC FILE
   ================================================== */
 
   function loadMovies() {
-
 
     fetch(
       DATA_FILE +
@@ -1391,7 +1540,6 @@
 
     .then(
       response => {
-
 
         if (
           !response.ok
@@ -1403,7 +1551,6 @@
 
         }
 
-
         return response.text();
 
       }
@@ -1412,11 +1559,9 @@
     .then(
       text => {
 
-
         parseMovies(
           text
         );
-
 
       }
     )
@@ -1424,19 +1569,15 @@
     .catch(
       error => {
 
-
         console.error(
           error
         );
 
-
         loading.style.display =
           "none";
 
-
         errorBox.style.display =
           "block";
-
 
         errorBox.textContent =
           "Không thể đọc file linkphim.txt.";
@@ -1448,13 +1589,12 @@
 
 
   /* ==================================================
-     PHÂN TÍCH DỮ LIỆU
+     PHÂN TÍCH FILE TXT
   ================================================== */
 
   function parseMovies(
     text
   ) {
-
 
     const lines =
       text
@@ -1477,15 +1617,13 @@
     lines.forEach(
       line => {
 
-
         /*
-          Đọc nội dung trong dấu ".
+          Cấu trúc:
 
-          Ví dụ:
-
-          "ABC" "TAP 01" "" "LINK"
-
-          → 4 trường.
+          "TÊN PHIM"
+          "TẬP ..."
+          "LINK LOGO"
+          "LINK PHIM"
         */
 
         const matches =
@@ -1530,13 +1668,6 @@
             .trim();
 
 
-        /*
-          Tên phim và link phim
-          bắt buộc phải có.
-
-          Logo được phép trống.
-        */
-
         if (
           !movieName ||
           !video
@@ -1546,12 +1677,6 @@
 
         }
 
-
-        /*
-          Có tập → phim bộ.
-
-          Không có tập → phim lẻ.
-        */
 
         allMovies.push({
 
@@ -1584,11 +1709,10 @@
 
 
   /* ==================================================
-     LỌC PHIM
+     LẤY DANH SÁCH HIỆN TẠI
   ================================================== */
 
   function getCurrentMovies() {
-
 
     return allMovies.filter(
       movie =>
@@ -1596,19 +1720,16 @@
         currentCategory
     );
 
-
   }
 
 
   /* ==================================================
-     HIỂN THỊ
+     RENDER
   ================================================== */
 
   function renderCurrentCategory() {
 
-
     closeEpisodePanel();
-
 
     const movies =
       getCurrentMovies();
@@ -1619,14 +1740,11 @@
       "series"
     ) {
 
-
       renderSeries(
         movies
       );
 
-
     } else {
-
 
       renderSingleMovies(
         movies
@@ -1645,19 +1763,12 @@
     movies
   ) {
 
-
     loading.style.display =
       "none";
-
 
     movieGrid.innerHTML =
       "";
 
-
-    /*
-      Gom các tập
-      cùng tên phim.
-    */
 
     const groups =
       new Map();
@@ -1665,7 +1776,6 @@
 
     movies.forEach(
       movie => {
-
 
         if (
           !groups.has(
@@ -1704,10 +1814,8 @@
       seriesList.length === 0
     ) {
 
-
       empty.style.display =
         "block";
-
 
       return;
 
@@ -1721,12 +1829,10 @@
     seriesList.forEach(
       ([name, episodes]) => {
 
-
         createSeriesCard(
           name,
           episodes
         );
-
 
       }
     );
@@ -1743,7 +1849,6 @@
     episodes
   ) {
 
-
     const card =
       document.createElement(
         "div"
@@ -1754,21 +1859,12 @@
       "movie-card";
 
 
-    /*
-      Tìm logo đầu tiên
-      có dữ liệu.
-    */
-
     const firstLogo =
       episodes.find(
         episode =>
           episode.logo
       );
 
-
-    /* =================================================
-       LOGO
-    ================================================= */
 
     const logoBox =
       document.createElement(
@@ -1783,7 +1879,6 @@
     if (
       firstLogo
     ) {
-
 
       const img =
         document.createElement(
@@ -1806,15 +1901,12 @@
       img.onerror =
         function () {
 
-
           logoBox.innerHTML =
             "";
-
 
           showDefaultLogo(
             logoBox
           );
-
 
         };
 
@@ -1826,19 +1918,12 @@
 
     } else {
 
-
       showDefaultLogo(
         logoBox
       );
 
     }
 
-
-    /* =================================================
-       TÊN
-
-       KHÔNG HIỆN TẬP.
-    ================================================= */
 
     const nameBox =
       document.createElement(
@@ -1864,23 +1949,15 @@
     );
 
 
-    /* =================================================
-       CLICK
-
-       MỞ LIST TẬP.
-    ================================================= */
-
     card.addEventListener(
       "click",
       function () {
-
 
         openEpisodePanel(
           name,
           episodes,
           card
         );
-
 
       }
     );
@@ -1901,10 +1978,8 @@
     movies
   ) {
 
-
     loading.style.display =
       "none";
-
 
     movieGrid.innerHTML =
       "";
@@ -1919,10 +1994,8 @@
       movies.length === 0
     ) {
 
-
       empty.style.display =
         "block";
-
 
       return;
 
@@ -1936,11 +2009,9 @@
     movies.forEach(
       movie => {
 
-
         createMovieCard(
           movie
         );
-
 
       }
     );
@@ -1955,7 +2026,6 @@
   function createMovieCard(
     movie
   ) {
-
 
     const card =
       document.createElement(
@@ -1981,7 +2051,6 @@
       movie.logo
     ) {
 
-
       const img =
         document.createElement(
           "img"
@@ -2003,15 +2072,12 @@
       img.onerror =
         function () {
 
-
           logoBox.innerHTML =
             "";
-
 
           showDefaultLogo(
             logoBox
           );
-
 
         };
 
@@ -2022,7 +2088,6 @@
 
 
     } else {
-
 
       showDefaultLogo(
         logoBox
@@ -2055,21 +2120,14 @@
     );
 
 
-    /*
-      PHIM LẺ:
-      click → play ngay.
-    */
-
     card.addEventListener(
       "click",
       function () {
-
 
         playMovie(
           movie,
           card
         );
-
 
       }
     );
@@ -2089,7 +2147,6 @@
   function showDefaultLogo(
     logoBox
   ) {
-
 
     const icon =
       document.createElement(
@@ -2120,7 +2177,6 @@
     episodeText
   ) {
 
-
     if (
       !episodeText
     ) {
@@ -2129,14 +2185,6 @@
 
     }
 
-
-    /*
-      Tìm số đầu tiên.
-
-      TAP 01 → 1
-      TAP 10 → 10
-      TAP 100 → 100
-    */
 
     const match =
       episodeText.match(
@@ -2162,7 +2210,7 @@
 
 
   /* ==================================================
-     MỞ DANH SÁCH TẬP
+     MỞ LIST TẬP
   ================================================== */
 
   function openEpisodePanel(
@@ -2170,7 +2218,6 @@
     episodes,
     card
   ) {
-
 
     episodePanel.style.display =
       "block";
@@ -2185,10 +2232,6 @@
       "";
 
 
-    /*
-      Active card.
-    */
-
     document
       .querySelectorAll(
         ".movie-card.active"
@@ -2196,11 +2239,9 @@
       .forEach(
         item => {
 
-
           item.classList.remove(
             "active"
           );
-
 
         }
       );
@@ -2211,29 +2252,24 @@
     );
 
 
-    /* =================================================
-       SẮP XẾP TẬP
-
-       Không quan tâm TXT
-       đang để thứ tự gì.
-    ================================================= */
+    /*
+      Tự động sắp xếp tập
+      theo số.
+    */
 
     const sortedEpisodes =
       [...episodes].sort(
         (a, b) => {
-
 
           const numberA =
             extractEpisodeNumber(
               a.episode
             );
 
-
           const numberB =
             extractEpisodeNumber(
               b.episode
             );
-
 
           return (
             numberA -
@@ -2244,13 +2280,8 @@
       );
 
 
-    /* =================================================
-       TẠO NÚT TẬP
-    ================================================= */
-
     sortedEpisodes.forEach(
       (episode, index) => {
-
 
         const button =
           document.createElement(
@@ -2272,20 +2303,10 @@
           (index + 1);
 
 
-        /*
-          Click tập
-          → play.
-        */
-
         button.addEventListener(
           "click",
           function () {
 
-
-            /*
-              Bỏ active
-              tập cũ.
-            */
 
             document
               .querySelectorAll(
@@ -2294,28 +2315,18 @@
               .forEach(
                 item => {
 
-
                   item.classList.remove(
                     "active"
                   );
-
 
                 }
               );
 
 
-            /*
-              Active tập hiện tại.
-            */
-
             button.classList.add(
               "active"
             );
 
-
-            /*
-              PLAY.
-            */
 
             playMovie(
               episode,
@@ -2335,10 +2346,6 @@
     );
 
 
-    /*
-      Cuộn tới danh sách tập.
-    */
-
     episodePanel.scrollIntoView({
 
       behavior:
@@ -2353,15 +2360,13 @@
 
 
   /* ==================================================
-     ĐÓNG DANH SÁCH TẬP
+     ĐÓNG LIST TẬP
   ================================================== */
 
   function closeEpisodePanel() {
 
-
     episodePanel.style.display =
       "none";
-
 
     episodeList.innerHTML =
       "";
@@ -2370,7 +2375,7 @@
 
 
   /* ==================================================
-     PHÁT PHIM
+     PLAY VIDEO
   ================================================== */
 
   function playMovie(
@@ -2378,16 +2383,9 @@
     card
   ) {
 
-
-    /*
-      Phim lẻ có card.
-      Tập phim bộ không có card.
-    */
-
     if (
       card
     ) {
-
 
       document
         .querySelectorAll(
@@ -2396,11 +2394,9 @@
         .forEach(
           item => {
 
-
             item.classList.remove(
               "active"
             );
-
 
           }
         );
@@ -2413,24 +2409,16 @@
     }
 
 
-    /*
-      Ẩn màn hình chờ.
-    */
-
     playerEmpty.style.display =
       "none";
 
-
-    /*
-      Hiện iframe.
-    */
 
     videoFrame.style.display =
       "block";
 
 
     /*
-      Đưa link phim vào player.
+      Link OneDrive.
     */
 
     videoFrame.src =
@@ -2438,39 +2426,34 @@
 
 
     /*
-      Hiện tên đang xem.
+      Hiện thông tin đang phát.
     */
 
     currentMovie.style.display =
-      "block";
+      "flex";
 
 
     if (
       movie.episode
     ) {
 
-
-      currentMovie.textContent =
+      currentMovieText.textContent =
         "▶ Đang xem: " +
         movie.name +
         " - " +
         movie.episode;
 
-
     } else {
 
-
-      currentMovie.textContent =
+      currentMovieText.textContent =
         "▶ Đang xem: " +
         movie.name;
-
 
     }
 
 
     /*
-      Cuộn lên đầu
-      tới player.
+      Cuộn lên player.
     */
 
     window.scrollTo({
@@ -2494,68 +2477,54 @@
     "click",
     function () {
 
-
       if (
         currentCategory ===
         "series"
       ) {
 
-
         currentCategory =
           "movie";
 
-
       } else {
-
 
         currentCategory =
           "series";
-
 
       }
 
 
       updateCategoryButton();
 
-
       renderCurrentCategory();
-
 
     }
   );
 
 
   /* ==================================================
-     CẬP NHẬT NÚT
+     CẬP NHẬT NÚT LOẠI PHIM
   ================================================== */
 
   function updateCategoryButton() {
-
 
     if (
       currentCategory ===
       "series"
     ) {
 
-
       categoryButton.textContent =
         "📺 PHIM BỘ";
-
 
       categoryButton.className =
         "category-button series";
 
-
     } else {
-
 
       categoryButton.textContent =
         "🎬 PHIM LẺ";
 
-
       categoryButton.className =
         "category-button movie";
-
 
     }
 
@@ -2568,11 +2537,11 @@
 
   updateCategoryButton();
 
+  updateFullscreenButton();
+
   loadMovies();
 
-
 </script>
-
 
 </body>
 
