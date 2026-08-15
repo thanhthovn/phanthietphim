@@ -1,2 +1,2 @@
-"CHỊ TRỢ LÝ CỦA ANH" "" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQraISXVXr8RJuXSn-OBVkeAd96BXtqCMc48Fcp8uCX4VI?width=1920&height=808" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png"
-"THỎ ƠI" "" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQTXGPPCjLXzSbnt4pkwnfB8AehQDgSTJ01GDR2EGOPeqP4?width=1920&height=1080" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png"
+"CHỊ TRỢ LÝ CỦA ANH" "" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQQraISXVXr8RJuXSn-OBVkeAd96BXtqCMc48Fcp8uCX4VI?width=1920&height=808" 
+"THỎ ƠI" "" "https://raw.githubusercontent.com/thanhthovn/iOSPremium/refs/heads/logo/slgsl.png" "https://1drv.ms/v/c/e92bb0b868c9b54b/IQTXGPPCjLXzSbnt4pkwnfB8AehQDgSTJ01GDR2EGOPeqP4?width=1920&height=1080" 
