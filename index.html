@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>KHO PHIM PHAN THIẾT</title>
+  <title>Kho Phim</title>
 
 
   <style>
@@ -58,6 +58,10 @@
       padding: 20px;
     }
 
+
+    /* ==================================================
+       CONTAINER
+    ================================================== */
 
     .container {
 
@@ -179,60 +183,6 @@
     }
 
 
-    /*
-      Chrome / Edge / Firefox
-    */
-
-    .player:fullscreen {
-
-      width:
-        100vw;
-
-      height:
-        100vh;
-
-      aspect-ratio:
-        auto;
-
-      border:
-        0;
-
-      border-radius:
-        0;
-
-      margin:
-        0;
-
-    }
-
-
-    /*
-      Safari
-    */
-
-    .player:-webkit-full-screen {
-
-      width:
-        100vw;
-
-      height:
-        100vh;
-
-      aspect-ratio:
-        auto;
-
-      border:
-        0;
-
-      border-radius:
-        0;
-
-      margin:
-        0;
-
-    }
-
-
     .player iframe {
 
       width:
@@ -246,6 +196,183 @@
 
       display:
         none;
+
+    }
+
+
+    /* ==================================================
+       FULLSCREEN THẬT
+       CHROME / EDGE / FIREFOX
+    ================================================== */
+
+    .player:fullscreen {
+
+      width:
+        100vw !important;
+
+      height:
+        100vh !important;
+
+      max-width:
+        none !important;
+
+      max-height:
+        none !important;
+
+      aspect-ratio:
+        auto !important;
+
+      position:
+        fixed !important;
+
+      top:
+        0 !important;
+
+      left:
+        0 !important;
+
+      z-index:
+        999999 !important;
+
+      margin:
+        0 !important;
+
+      padding:
+        0 !important;
+
+      border:
+        0 !important;
+
+      border-radius:
+        0 !important;
+
+      background:
+        #000 !important;
+
+    }
+
+
+    /* ==================================================
+       FULLSCREEN SAFARI
+    ================================================== */
+
+    .player:-webkit-full-screen {
+
+      width:
+        100vw !important;
+
+      height:
+        100vh !important;
+
+      max-width:
+        none !important;
+
+      max-height:
+        none !important;
+
+      aspect-ratio:
+        auto !important;
+
+      position:
+        fixed !important;
+
+      top:
+        0 !important;
+
+      left:
+        0 !important;
+
+      z-index:
+        999999 !important;
+
+      margin:
+        0 !important;
+
+      padding:
+        0 !important;
+
+      border:
+        0 !important;
+
+      border-radius:
+        0 !important;
+
+      background:
+        #000 !important;
+
+    }
+
+
+    /* ==================================================
+       FULLSCREEN FALLBACK
+       DÙNG KHI SAFARI KHÔNG CHO API
+    ================================================== */
+
+    .player.fake-fullscreen {
+
+      width:
+        100vw !important;
+
+      height:
+        100vh !important;
+
+      max-width:
+        none !important;
+
+      max-height:
+        none !important;
+
+      aspect-ratio:
+        auto !important;
+
+      position:
+        fixed !important;
+
+      top:
+        0 !important;
+
+      left:
+        0 !important;
+
+      z-index:
+        999999 !important;
+
+      margin:
+        0 !important;
+
+      padding:
+        0 !important;
+
+      border:
+        0 !important;
+
+      border-radius:
+        0 !important;
+
+      background:
+        #000 !important;
+
+    }
+
+
+    .player.fake-fullscreen iframe {
+
+      width:
+        100% !important;
+
+      height:
+        100% !important;
+
+    }
+
+
+    body.fake-fullscreen-active {
+
+      overflow:
+        hidden !important;
+
+      height:
+        100vh !important;
 
     }
 
@@ -342,6 +469,12 @@
         0 5px 15px
         rgba(0, 0, 0, 0.2);
 
+      position:
+        relative;
+
+      z-index:
+        1;
+
     }
 
 
@@ -375,7 +508,42 @@
 
 
     /* ==================================================
-       FULLSCREEN BUTTON
+       FULLSCREEN FALLBACK:
+       THANH ĐANG XEM NẰM TRÊN PLAYER
+    ================================================== */
+
+    body.fake-fullscreen-active
+    .current-movie {
+
+      display:
+        flex !important;
+
+      position:
+        fixed;
+
+      top:
+        10px;
+
+      left:
+        10px;
+
+      right:
+        10px;
+
+      margin:
+        0;
+
+      z-index:
+        1000001;
+
+      background:
+        rgba(88, 86, 214, 0.92);
+
+    }
+
+
+    /* ==================================================
+       NÚT FULLSCREEN ĐỎ
     ================================================== */
 
     .fullscreen-button {
@@ -717,7 +885,7 @@
 
 
     /* ==================================================
-       ACTIVE CARD
+       CARD ACTIVE
     ================================================== */
 
     .movie-card.active {
@@ -871,7 +1039,7 @@
 
 
     /* ==================================================
-       EPISODE PANEL
+       DANH SÁCH TẬP
     ================================================== */
 
     .episode-panel {
@@ -938,7 +1106,7 @@
 
 
     /* ==================================================
-       EPISODE BUTTON
+       NÚT TẬP
     ================================================== */
 
     .episode-button {
@@ -1061,17 +1229,26 @@
     @media (max-width: 600px) {
 
       body {
-        padding: 10px;
+
+        padding:
+          10px;
+
       }
 
 
       .header {
-        padding: 15px;
+
+        padding:
+          15px;
+
       }
 
 
       .header h1 {
-        font-size: 22px;
+
+        font-size:
+          22px;
+
       }
 
 
@@ -1199,6 +1376,21 @@
 
       }
 
+
+      body.fake-fullscreen-active
+      .current-movie {
+
+        top:
+          5px;
+
+        left:
+          5px;
+
+        right:
+          5px;
+
+      }
+
     }
 
 
@@ -1303,7 +1495,7 @@
 
 
   <!-- =================================================
-       ĐANG XEM + FULLSCREEN
+       ĐANG XEM
   ================================================== -->
 
   <div
@@ -1332,7 +1524,7 @@
 
 
   <!-- =================================================
-       CHUYỂN PHIM BỘ / PHIM LẺ
+       PHIM BỘ / PHIM LẺ
   ================================================== -->
 
   <div class="movie-header">
@@ -1433,6 +1625,7 @@
 
 <script>
 
+
   /* ==================================================
      CẤU HÌNH
   ================================================== */
@@ -1448,7 +1641,12 @@
   let currentCategory =
     "series";
 
+
   let allMovies = [];
+
+
+  let fakeFullscreen =
+    false;
 
 
   /* ==================================================
@@ -1546,133 +1744,229 @@
 
 
   /* ==================================================
-     FULLSCREEN
-     Chrome / Edge / Firefox / Safari
+     VÀO FULLSCREEN
+  ================================================== */
+
+  async function enterFullscreen() {
+
+
+    /*
+      Thử Fullscreen API chuẩn.
+    */
+
+    try {
+
+      if (
+        playerBox.requestFullscreen
+      ) {
+
+        await playerBox.requestFullscreen();
+
+        return true;
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        "Fullscreen API không hoạt động:",
+        error
+      );
+
+    }
+
+
+    /*
+      Safari WebKit.
+    */
+
+    try {
+
+      if (
+        playerBox.webkitRequestFullscreen
+      ) {
+
+        playerBox.webkitRequestFullscreen();
+
+        return true;
+
+      }
+
+    } catch (error) {
+
+      console.warn(
+        "Safari WebKit fullscreen không hoạt động:",
+        error
+      );
+
+    }
+
+
+    /*
+      Fallback CSS.
+
+      Không báo lỗi.
+      Player sẽ phủ toàn màn hình.
+    */
+
+    playerBox.classList.add(
+      "fake-fullscreen"
+    );
+
+
+    document.body.classList.add(
+      "fake-fullscreen-active"
+    );
+
+
+    fakeFullscreen =
+      true;
+
+
+    updateFullscreenButton();
+
+
+    return true;
+
+  }
+
+
+  /* ==================================================
+     THOÁT FULLSCREEN
+  ================================================== */
+
+  async function exitFullscreen() {
+
+
+    /*
+      Nếu đang dùng fallback CSS.
+    */
+
+    if (
+      fakeFullscreen
+    ) {
+
+
+      playerBox.classList.remove(
+        "fake-fullscreen"
+      );
+
+
+      document.body.classList.remove(
+        "fake-fullscreen-active"
+      );
+
+
+      fakeFullscreen =
+        false;
+
+
+      updateFullscreenButton();
+
+
+      return;
+
+    }
+
+
+    /*
+      Fullscreen API chuẩn.
+    */
+
+    try {
+
+
+      if (
+        document.exitFullscreen
+      ) {
+
+
+        await document.exitFullscreen();
+
+
+      } else if (
+        document.webkitExitFullscreen
+      ) {
+
+
+        document.webkitExitFullscreen();
+
+
+      }
+
+
+    } catch (error) {
+
+
+      console.warn(
+        "Không thể thoát fullscreen:",
+        error
+      );
+
+
+    }
+
+
+    updateFullscreenButton();
+
+  }
+
+
+  /* ==================================================
+     NÚT FULLSCREEN
   ================================================== */
 
   fullscreenButton.addEventListener(
     "click",
     async function () {
 
-      try {
 
-        /*
-          Đang fullscreen
-          → thoát.
-        */
-
-        if (
-          document.fullscreenElement ||
-          document.webkitFullscreenElement
-        ) {
+      const realFullscreen =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement;
 
 
-          if (
-            document.exitFullscreen
-          ) {
+      /*
+        Nếu đang fullscreen
+        → thoát.
+      */
 
-            await document.exitFullscreen();
-
-          } else if (
-            document.webkitExitFullscreen
-          ) {
-
-            document.webkitExitFullscreen();
-
-          }
+      if (
+        realFullscreen ||
+        fakeFullscreen
+      ) {
 
 
-          return;
-
-        }
+        await exitFullscreen();
 
 
-        /*
-          ==============================================
-          CHUẨN FULLSCREEN API
-          Chrome / Edge / Firefox
-          ==============================================
-        */
-
-        if (
-          playerBox.requestFullscreen
-        ) {
-
-          await playerBox.requestFullscreen();
-
-          return;
-
-        }
-
-
-        /*
-          ==============================================
-          SAFARI WEBKIT
-          ==============================================
-        */
-
-        if (
-          playerBox.webkitRequestFullscreen
-        ) {
-
-          playerBox.webkitRequestFullscreen();
-
-          return;
-
-        }
-
-
-        /*
-          ==============================================
-          SAFARI THỬ TRỰC TIẾP IFRAME
-          ==============================================
-        */
-
-        if (
-          videoFrame.webkitRequestFullscreen
-        ) {
-
-          videoFrame.webkitRequestFullscreen();
-
-          return;
-
-        }
-
-
-        /*
-          ==============================================
-          KHÔNG HỖ TRỢ
-          ==============================================
-        */
-
-        alert(
-          "Trình duyệt này không hỗ trợ toàn màn hình."
-        );
+        return;
 
       }
 
-      catch (error) {
 
-        console.error(
-          "Fullscreen error:",
-          error
-        );
+      /*
+        Nếu chưa fullscreen
+        → vào fullscreen.
+      */
 
-      }
+      await enterFullscreen();
 
     }
   );
 
 
   /* ==================================================
-     CẬP NHẬT TRẠNG THÁI FULLSCREEN
+     CẬP NHẬT NÚT FULLSCREEN
   ================================================== */
 
   function updateFullscreenButton() {
 
+
     const isFullscreen =
       document.fullscreenElement ||
-      document.webkitFullscreenElement;
+      document.webkitFullscreenElement ||
+      fakeFullscreen;
 
 
     /*
@@ -1687,32 +1981,59 @@
       isFullscreen
     ) {
 
+
       fullscreenButton.title =
         "Thoát toàn màn hình";
 
+
     } else {
+
 
       fullscreenButton.title =
         "Toàn màn hình";
+
 
     }
 
   }
 
 
-  /*
-    Chrome / Edge / Firefox
-  */
+  /* ==================================================
+     FULLSCREEN CHANGE
+  ================================================== */
 
   document.addEventListener(
     "fullscreenchange",
-    updateFullscreenButton
+    function () {
+
+
+      /*
+        Nếu browser thoát fullscreen
+        bằng ESC thì reset trạng thái.
+      */
+
+      if (
+        !document.fullscreenElement &&
+        !document.webkitFullscreenElement
+      ) {
+
+
+        if (
+          !fakeFullscreen
+        ) {
+
+          updateFullscreenButton();
+
+        }
+
+      }
+
+
+      updateFullscreenButton();
+
+    }
   );
 
-
-  /*
-    Safari
-  */
 
   document.addEventListener(
     "webkitfullscreenchange",
@@ -1721,10 +2042,35 @@
 
 
   /* ==================================================
-     ĐỌC linkphim.txt
+     ESC CHO FALLBACK SAFARI
+  ================================================== */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+      if (
+        event.key === "Escape" &&
+        fakeFullscreen
+      ) {
+
+
+        exitFullscreen();
+
+
+      }
+
+    }
+  );
+
+
+  /* ==================================================
+     ĐỌC FILE linkphim.txt
   ================================================== */
 
   function loadMovies() {
+
 
     fetch(
       DATA_FILE +
@@ -1735,17 +2081,22 @@
     .then(
       response => {
 
+
         if (
           !response.ok
         ) {
+
 
           throw new Error(
             "Không thể đọc linkphim.txt"
           );
 
+
         }
 
+
         return response.text();
+
 
       }
     )
@@ -1753,9 +2104,11 @@
     .then(
       text => {
 
+
         parseMovies(
           text
         );
+
 
       }
     )
@@ -1763,18 +2116,23 @@
     .catch(
       error => {
 
+
         console.error(
           error
         );
 
+
         loading.style.display =
           "none";
+
 
         errorBox.style.display =
           "block";
 
+
         errorBox.textContent =
           "Không thể đọc file linkphim.txt.";
+
 
       }
     );
@@ -1783,12 +2141,13 @@
 
 
   /* ==================================================
-     PHÂN TÍCH TXT
+     PHÂN TÍCH FILE TXT
   ================================================== */
 
   function parseMovies(
     text
   ) {
+
 
     const lines =
       text
@@ -1811,6 +2170,7 @@
     lines.forEach(
       line => {
 
+
         /*
           Cấu trúc:
 
@@ -1820,6 +2180,7 @@
           "LINK PHIM"
         */
 
+
         const matches =
           [
             ...line.matchAll(
@@ -1828,14 +2189,21 @@
           ];
 
 
+        /*
+          Bắt buộc phải có
+          4 cặp dấu ".
+        */
+
         if (
           matches.length < 4
         ) {
+
 
           console.warn(
             "Dòng không hợp lệ:",
             line
           );
+
 
           return;
 
@@ -1867,6 +2235,7 @@
           !video
         ) {
 
+
           return;
 
         }
@@ -1893,6 +2262,7 @@
 
         });
 
+
       }
     );
 
@@ -1908,11 +2278,13 @@
 
   function getCurrentMovies() {
 
+
     return allMovies.filter(
       movie =>
         movie.type ===
         currentCategory
     );
+
 
   }
 
@@ -1922,6 +2294,7 @@
   ================================================== */
 
   function renderCurrentCategory() {
+
 
     closeEpisodePanel();
 
@@ -1935,15 +2308,19 @@
       "series"
     ) {
 
+
       renderSeries(
         movies
       );
 
+
     } else {
+
 
       renderSingleMovies(
         movies
       );
+
 
     }
 
@@ -1951,12 +2328,13 @@
 
 
   /* ==================================================
-     PHIM BỘ
+     RENDER PHIM BỘ
   ================================================== */
 
   function renderSeries(
     movies
   ) {
+
 
     loading.style.display =
       "none";
@@ -1973,16 +2351,19 @@
     movies.forEach(
       movie => {
 
+
         if (
           !groups.has(
             movie.name
           )
         ) {
 
+
           groups.set(
             movie.name,
             []
           );
+
 
         }
 
@@ -1990,6 +2371,7 @@
         groups
           .get(movie.name)
           .push(movie);
+
 
       }
     );
@@ -2010,8 +2392,10 @@
       seriesList.length === 0
     ) {
 
+
       empty.style.display =
         "block";
+
 
       return;
 
@@ -2025,10 +2409,12 @@
     seriesList.forEach(
       ([name, episodes]) => {
 
+
         createSeriesCard(
           name,
           episodes
         );
+
 
       }
     );
@@ -2045,6 +2431,7 @@
     episodes
   ) {
 
+
     const card =
       document.createElement(
         "div"
@@ -2054,6 +2441,11 @@
     card.className =
       "movie-card";
 
+
+    /*
+      Lấy logo đầu tiên
+      có trong các tập.
+    */
 
     const firstLogo =
       episodes.find(
@@ -2076,6 +2468,7 @@
       firstLogo
     ) {
 
+
       const img =
         document.createElement(
           "img"
@@ -2097,12 +2490,15 @@
       img.onerror =
         function () {
 
+
           logoBox.innerHTML =
             "";
+
 
           showDefaultLogo(
             logoBox
           );
+
 
         };
 
@@ -2114,9 +2510,11 @@
 
     } else {
 
+
       showDefaultLogo(
         logoBox
       );
+
 
     }
 
@@ -2149,11 +2547,13 @@
       "click",
       function () {
 
+
         openEpisodePanel(
           name,
           episodes,
           card
         );
+
 
       }
     );
@@ -2167,12 +2567,13 @@
 
 
   /* ==================================================
-     PHIM LẺ
+     RENDER PHIM LẺ
   ================================================== */
 
   function renderSingleMovies(
     movies
   ) {
+
 
     loading.style.display =
       "none";
@@ -2191,8 +2592,10 @@
       movies.length === 0
     ) {
 
+
       empty.style.display =
         "block";
+
 
       return;
 
@@ -2206,9 +2609,11 @@
     movies.forEach(
       movie => {
 
+
         createMovieCard(
           movie
         );
+
 
       }
     );
@@ -2223,6 +2628,7 @@
   function createMovieCard(
     movie
   ) {
+
 
     const card =
       document.createElement(
@@ -2248,6 +2654,7 @@
       movie.logo
     ) {
 
+
       const img =
         document.createElement(
           "img"
@@ -2269,12 +2676,15 @@
       img.onerror =
         function () {
 
+
           logoBox.innerHTML =
             "";
+
 
           showDefaultLogo(
             logoBox
           );
+
 
         };
 
@@ -2286,9 +2696,11 @@
 
     } else {
 
+
       showDefaultLogo(
         logoBox
       );
+
 
     }
 
@@ -2321,10 +2733,12 @@
       "click",
       function () {
 
+
         playMovie(
           movie,
           card
         );
+
 
       }
     );
@@ -2344,6 +2758,7 @@
   function showDefaultLogo(
     logoBox
   ) {
+
 
     const icon =
       document.createElement(
@@ -2374,11 +2789,14 @@
     episodeText
   ) {
 
+
     if (
       !episodeText
     ) {
 
+
       return 0;
+
 
     }
 
@@ -2393,7 +2811,9 @@
       !match
     ) {
 
+
       return 0;
+
 
     }
 
@@ -2407,7 +2827,7 @@
 
 
   /* ==================================================
-     MỞ LIST TẬP
+     MỞ DANH SÁCH TẬP
   ================================================== */
 
   function openEpisodePanel(
@@ -2415,6 +2835,7 @@
     episodes,
     card
   ) {
+
 
     episodePanel.style.display =
       "block";
@@ -2429,6 +2850,10 @@
       "";
 
 
+    /*
+      Bỏ active card cũ.
+    */
+
     document
       .querySelectorAll(
         ".movie-card.active"
@@ -2436,9 +2861,11 @@
       .forEach(
         item => {
 
+
           item.classList.remove(
             "active"
           );
+
 
         }
       );
@@ -2450,12 +2877,15 @@
 
 
     /*
-      Sắp xếp theo số tập.
+      Sắp xếp tập theo số.
+
+      10 sẽ nằm sau 9.
     */
 
     const sortedEpisodes =
       [...episodes].sort(
         (a, b) => {
+
 
           const numberA =
             extractEpisodeNumber(
@@ -2474,12 +2904,14 @@
             numberB
           );
 
+
         }
       );
 
 
     sortedEpisodes.forEach(
       (episode, index) => {
+
 
         const button =
           document.createElement(
@@ -2506,6 +2938,10 @@
           function () {
 
 
+            /*
+              Bỏ active tập cũ.
+            */
+
             document
               .querySelectorAll(
                 ".episode-button.active"
@@ -2513,9 +2949,11 @@
               .forEach(
                 item => {
 
+
                   item.classList.remove(
                     "active"
                   );
+
 
                 }
               );
@@ -2525,6 +2963,11 @@
               "active"
             );
 
+
+            /*
+              Chỉ khi bấm tập
+              mới phát video.
+            */
 
             playMovie(
               episode,
@@ -2540,9 +2983,14 @@
           button
         );
 
+
       }
     );
 
+
+    /*
+      Cuộn tới danh sách tập.
+    */
 
     episodePanel.scrollIntoView({
 
@@ -2563,6 +3011,7 @@
 
   function closeEpisodePanel() {
 
+
     episodePanel.style.display =
       "none";
 
@@ -2574,7 +3023,7 @@
 
 
   /* ==================================================
-     PLAY
+     PHÁT VIDEO
   ================================================== */
 
   function playMovie(
@@ -2582,6 +3031,10 @@
     card
   ) {
 
+
+    /*
+      Active card phim lẻ.
+    */
 
     if (
       card
@@ -2595,9 +3048,11 @@
         .forEach(
           item => {
 
+
             item.classList.remove(
               "active"
             );
+
 
           }
         );
@@ -2611,16 +3066,24 @@
     }
 
 
+    /*
+      Ẩn màn hình chờ.
+    */
+
     playerEmpty.style.display =
       "none";
 
+
+    /*
+      Hiện iframe.
+    */
 
     videoFrame.style.display =
       "block";
 
 
     /*
-      Link OneDrive.
+      Nạp link OneDrive.
     */
 
     videoFrame.src =
@@ -2639,23 +3102,27 @@
       movie.episode
     ) {
 
+
       currentMovieText.textContent =
         "▶ Đang xem: " +
         movie.name +
         " - " +
         movie.episode;
 
+
     } else {
+
 
       currentMovieText.textContent =
         "▶ Đang xem: " +
         movie.name;
 
+
     }
 
 
     /*
-      Cuộn lên player.
+      Cuộn về đầu trang.
     */
 
     window.scrollTo({
@@ -2685,13 +3152,17 @@
         "series"
       ) {
 
+
         currentCategory =
           "movie";
 
+
       } else {
+
 
         currentCategory =
           "series";
+
 
       }
 
@@ -2700,6 +3171,7 @@
 
 
       renderCurrentCategory();
+
 
     }
   );
@@ -2717,6 +3189,7 @@
       "series"
     ) {
 
+
       categoryButton.textContent =
         "📺 PHIM BỘ";
 
@@ -2724,7 +3197,9 @@
       categoryButton.className =
         "category-button series";
 
+
     } else {
+
 
       categoryButton.textContent =
         "🎬 PHIM LẺ";
@@ -2732,6 +3207,7 @@
 
       categoryButton.className =
         "category-button movie";
+
 
     }
 
@@ -2747,6 +3223,7 @@
   updateFullscreenButton();
 
   loadMovies();
+
 
 </script>
 
